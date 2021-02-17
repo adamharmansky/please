@@ -1,0 +1,73 @@
+#!/bin/bash
+if [[ $1 == "move" || $1 == "rename" || $1 == "wename" || $1 == "change" ]]; then
+	if [[ -n $2 && -n $3 ]]; then
+		if [[ ( $3 == "to" || $3 == "into" ) && -n $4 ]]; then
+			echo "mv $2 $4"
+			mv $2 $4
+		else
+			echo "mv $2 $3"
+			mv $2 $3
+		fi
+	else
+		echo "pwease enter enough arguments!"
+	fi
+elif [[ $1 == "edit" || $1 == "vim" || $1 == "page" || $1 == "read" || $1 = "wim" ]]; then
+	if [[ -n $2 ]]; then
+		echo "vim $2"
+		vim $2
+	else
+		echo "pwease enter enough arguments!"
+	fi
+elif [[ $1 == "copy" || $1 == "paste" || $1 == "yank" || $1 == "yoink" ]];then
+	if [[ -n $2 && -n $3 ]]; then
+		if [[ ( $3 == "to" || $3 == "into" ) && -n $4 ]]; then
+			echo "cp -r $2 $4"
+			cp -r $2 $4
+		else
+			echo "cp -r $2 $3"
+			cp -r $2 $3
+		fi
+	else
+		echo "pwease enter enough arguments!"
+	fi
+elif [[ $1 == "remove" || $1 == "wemove" || $1 == "delete" || $1 == "dewete" ]];then
+	if [[ -n $2 ]]; then
+		if [[ ( $2 == "the" || $2 == "da" ) && ( $3 == "file" || $3 == "folder" || $3 == "foldew" ) ]]; then
+			if [[ -n $4 ]]; then
+				echo "rm -rf $4"
+				rm -rf $4
+			else
+				echo "pwease enter enough arguments!"
+			fi
+		else
+			echo "rm -rf $2"
+			rm -rf $2
+		fi
+	else
+		echo "pwease enter enough arguments!"
+	fi
+elif [[ $1 == "show" || $1 == "display" || $1 == "dispway" || $1 == "see" ]]; then
+	if [[ -n $2 ]]; then
+		if [[ $2 == "me" ]]; then
+			echo "feh $3"
+			feh $3
+		else
+			echo "feh $2"
+			feh $2
+		fi
+	else
+		echo "pwease enter enough arguments!"
+	fi
+elif [[ $1 == "list" || $1 == ls ]]; then
+	echo "ls -trlh --color"
+	ls -trlh --color
+elif [[ $1 == "help" || $1 == "hewp" ]]; then
+	echo -e "HEWP:"
+	echo -e "\x1b[95mmove/rename/wename/change\x1b[0m   A B or A to/into B - mv"
+	echo -e "\x1b[95medit/vim/page/read\x1b[0m          A - vim A"
+	echo -e "\x1b[95mdelete/remove/dewete/wemove\x1b[0m A - rm -rf A"
+	echo -e "\x1b[95mcopy/paste/yank/yoink\x1b[0m       A B or A to/into B - cp -r A B"
+	echo -e "\x1b[95mshow/display/dispway/see\x1b[0m    A - feh A"
+	echo -e "\x1b[95mlist/ls\x1b[0m                     ls -trlh --color"
+	echo -e "\x1b[95mhelp/hewp - dispway hewp\x1b[0m    ;)"
+fi
